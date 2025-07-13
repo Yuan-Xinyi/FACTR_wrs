@@ -1,0 +1,17 @@
+package.xml
+setup.cfg
+setup.py
+bc/__init__.py
+bc/data_record.py
+bc/franka_bridge.py
+bc/policy_rollout.py
+bc/rollout.py
+bc/utils.py
+bc.egg-info/PKG-INFO
+bc.egg-info/SOURCES.txt
+bc.egg-info/dependency_links.txt
+bc.egg-info/entry_points.txt
+bc.egg-info/requires.txt
+bc.egg-info/top_level.txt
+bc.egg-info/zip-safe
+resource/bc

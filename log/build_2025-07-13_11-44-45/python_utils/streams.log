@@ -1,0 +1,20 @@
+[1.792s] Invoking command in '/home/wrs/factr_ws/build/python_utils': PYTHONPATH=/home/wrs/factr_ws/build/python_utils/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/wrs/factr_ws/install/python_utils/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/wrs/factr_ws/build/python_utils/build --no-deps symlink_data
+[2.096s] running develop
+[2.171s] /usr/lib/python3/dist-packages/pkg_resources/__init__.py:116: PkgResourcesDeprecationWarning: 2.22.1ubuntu1 is an invalid version and will not be supported in a future release
+[2.171s]   warnings.warn(
+[2.309s] running egg_info
+[2.309s] writing python_utils.egg-info/PKG-INFO
+[2.310s] writing dependency_links to python_utils.egg-info/dependency_links.txt
+[2.310s] writing entry points to python_utils.egg-info/entry_points.txt
+[2.310s] writing requirements to python_utils.egg-info/requires.txt
+[2.310s] writing top-level names to python_utils.egg-info/top_level.txt
+[2.312s] reading manifest file 'python_utils.egg-info/SOURCES.txt'
+[2.314s] writing manifest file 'python_utils.egg-info/SOURCES.txt'
+[2.314s] running build_ext
+[2.314s] Creating /home/wrs/factr_ws/install/python_utils/lib/python3.10/site-packages/python-utils.egg-link (link to .)
+[2.315s] Installing factr_teleop_franka script to /home/wrs/factr_ws/install/python_utils/lib/python_utils
+[2.316s] Installing factr_teleop_grav_comp_demo script to /home/wrs/factr_ws/install/python_utils/lib/python_utils
+[2.316s] 
+[2.316s] Installed /home/wrs/factr_ws/build/python_utils
+[2.316s] running symlink_data
+[2.358s] Invoked command in '/home/wrs/factr_ws/build/python_utils' returned '0': PYTHONPATH=/home/wrs/factr_ws/build/python_utils/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/wrs/factr_ws/install/python_utils/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/wrs/factr_ws/build/python_utils/build --no-deps symlink_data

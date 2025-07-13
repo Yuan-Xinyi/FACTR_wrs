@@ -1,0 +1,53 @@
+[0.843s] Invoking command in '/home/wrs/factr_ws/build/franka_zmq_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/wrs/factr_ws/install/python_utils:/home/wrs/factr_ws/install/factr_teleop:/home/wrs/factr_ws/install/cameras:/home/wrs/factr_ws/install/bc:/opt/ros/humble /usr/bin/cmake /home/wrs/factr_ws/src/franka_zmq_controller -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/wrs/factr_ws/install/franka_zmq_controller
+[0.856s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[1.006s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[1.068s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[1.101s] -- Found rclcpp: 16.0.12 (/opt/ros/humble/share/rclcpp/cmake)
+[1.149s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[1.158s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[1.165s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[1.179s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.196s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.256s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[1.270s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[1.356s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[1.390s] -- Found FastRTPS: /opt/ros/humble/include  
+[1.448s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.449s] -- Looking for pthread.h
+[1.525s] -- Looking for pthread.h - found
+[1.526s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.659s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[1.660s] -- Found Threads: TRUE  
+[1.737s] -- Found sensor_msgs: 4.8.0 (/opt/ros/humble/share/sensor_msgs/cmake)
+[1.775s] -- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.2") 
+[1.776s] -- Checking for module 'libzmq'
+[1.789s] --   Found libzmq, version 4.3.4
+[1.906s] -- Configuring done
+[1.930s] -- Generating done
+[1.939s] -- Build files have been written to: /home/wrs/factr_ws/build/franka_zmq_controller
+[1.950s] Invoked command in '/home/wrs/factr_ws/build/franka_zmq_controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/wrs/factr_ws/install/python_utils:/home/wrs/factr_ws/install/factr_teleop:/home/wrs/factr_ws/install/cameras:/home/wrs/factr_ws/install/bc:/opt/ros/humble /usr/bin/cmake /home/wrs/factr_ws/src/franka_zmq_controller -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/wrs/factr_ws/install/franka_zmq_controller
+[1.951s] Invoking command in '/home/wrs/factr_ws/build/franka_zmq_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/wrs/factr_ws/install/python_utils:/home/wrs/factr_ws/install/factr_teleop:/home/wrs/factr_ws/install/cameras:/home/wrs/factr_ws/install/bc:/opt/ros/humble /usr/bin/cmake --build /home/wrs/factr_ws/build/franka_zmq_controller -- -j6 -l6
+[2.004s] [ 50%] [32mBuilding CXX object CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o[0m
+[2.841s] [100%] [32m[1mLinking CXX executable franka_zmq_controller_node[0m
+[3.001s] [100%] Built target franka_zmq_controller_node
+[3.011s] Invoked command in '/home/wrs/factr_ws/build/franka_zmq_controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/wrs/factr_ws/install/python_utils:/home/wrs/factr_ws/install/factr_teleop:/home/wrs/factr_ws/install/cameras:/home/wrs/factr_ws/install/bc:/opt/ros/humble /usr/bin/cmake --build /home/wrs/factr_ws/build/franka_zmq_controller -- -j6 -l6
+[3.022s] Invoking command in '/home/wrs/factr_ws/build/franka_zmq_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/wrs/factr_ws/install/python_utils:/home/wrs/factr_ws/install/factr_teleop:/home/wrs/factr_ws/install/cameras:/home/wrs/factr_ws/install/bc:/opt/ros/humble /usr/bin/cmake --install /home/wrs/factr_ws/build/franka_zmq_controller
+[3.027s] -- Install configuration: ""
+[3.028s] -- Execute custom install script
+[3.028s] -- Symlinking: /home/wrs/factr_ws/install/franka_zmq_controller/lib/franka_zmq_controller/franka_zmq_controller_node
+[3.038s] -- Symlinking: /home/wrs/factr_ws/install/franka_zmq_controller/share/ament_index/resource_index/package_run_dependencies/franka_zmq_controller
+[3.048s] -- Symlinking: /home/wrs/factr_ws/install/franka_zmq_controller/share/ament_index/resource_index/parent_prefix_path/franka_zmq_controller
+[3.055s] -- Symlinking: /home/wrs/factr_ws/install/franka_zmq_controller/share/franka_zmq_controller/environment/ament_prefix_path.sh
+[3.064s] -- Symlinking: /home/wrs/factr_ws/install/franka_zmq_controller/share/franka_zmq_controller/environment/ament_prefix_path.dsv
+[3.072s] -- Symlinking: /home/wrs/factr_ws/install/franka_zmq_controller/share/franka_zmq_controller/environment/path.sh
+[3.082s] -- Symlinking: /home/wrs/factr_ws/install/franka_zmq_controller/share/franka_zmq_controller/environment/path.dsv
+[3.091s] -- Symlinking: /home/wrs/factr_ws/install/franka_zmq_controller/share/franka_zmq_controller/local_setup.bash
+[3.099s] -- Symlinking: /home/wrs/factr_ws/install/franka_zmq_controller/share/franka_zmq_controller/local_setup.sh
+[3.108s] -- Symlinking: /home/wrs/factr_ws/install/franka_zmq_controller/share/franka_zmq_controller/local_setup.zsh
+[3.116s] -- Symlinking: /home/wrs/factr_ws/install/franka_zmq_controller/share/franka_zmq_controller/local_setup.dsv
+[3.124s] -- Symlinking: /home/wrs/factr_ws/install/franka_zmq_controller/share/franka_zmq_controller/package.dsv
+[3.131s] -- Symlinking: /home/wrs/factr_ws/install/franka_zmq_controller/share/ament_index/resource_index/packages/franka_zmq_controller
+[3.140s] -- Symlinking: /home/wrs/factr_ws/install/franka_zmq_controller/share/franka_zmq_controller/cmake/franka_zmq_controllerConfig.cmake
+[3.148s] -- Symlinking: /home/wrs/factr_ws/install/franka_zmq_controller/share/franka_zmq_controller/cmake/franka_zmq_controllerConfig-version.cmake
+[3.156s] -- Symlinking: /home/wrs/factr_ws/install/franka_zmq_controller/share/franka_zmq_controller/package.xml
+[3.166s] Invoked command in '/home/wrs/factr_ws/build/franka_zmq_controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/wrs/factr_ws/install/python_utils:/home/wrs/factr_ws/install/factr_teleop:/home/wrs/factr_ws/install/cameras:/home/wrs/factr_ws/install/bc:/opt/ros/humble /usr/bin/cmake --install /home/wrs/factr_ws/build/franka_zmq_controller

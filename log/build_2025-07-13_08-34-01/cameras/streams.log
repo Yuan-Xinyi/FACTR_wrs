@@ -1,0 +1,27 @@
+[1.733s] Invoking command in '/home/wrs/factr_ws/build/cameras': PYTHONPATH=/home/wrs/factr_ws/build/cameras/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/wrs/factr_ws/install/cameras/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/wrs/factr_ws/build/cameras/build --no-deps symlink_data
+[2.014s] running develop
+[2.083s] /usr/lib/python3/dist-packages/pkg_resources/__init__.py:116: PkgResourcesDeprecationWarning: 2.22.1ubuntu1 is an invalid version and will not be supported in a future release
+[2.083s]   warnings.warn(
+[2.218s] running egg_info
+[2.219s] creating cameras.egg-info
+[2.219s] writing cameras.egg-info/PKG-INFO
+[2.219s] writing dependency_links to cameras.egg-info/dependency_links.txt
+[2.221s] writing entry points to cameras.egg-info/entry_points.txt
+[2.221s] writing requirements to cameras.egg-info/requires.txt
+[2.222s] writing top-level names to cameras.egg-info/top_level.txt
+[2.223s] writing manifest file 'cameras.egg-info/SOURCES.txt'
+[2.225s] reading manifest file 'cameras.egg-info/SOURCES.txt'
+[2.227s] writing manifest file 'cameras.egg-info/SOURCES.txt'
+[2.230s] running build_ext
+[2.233s] Creating /home/wrs/factr_ws/install/cameras/lib/python3.10/site-packages/cameras.egg-link (link to .)
+[2.234s] Installing realsense script to /home/wrs/factr_ws/install/cameras/lib/cameras
+[2.234s] Installing zed script to /home/wrs/factr_ws/install/cameras/lib/cameras
+[2.238s] 
+[2.238s] Installed /home/wrs/factr_ws/build/cameras
+[2.238s] running symlink_data
+[2.238s] creating /home/wrs/factr_ws/install/cameras/share/ament_index
+[2.238s] creating /home/wrs/factr_ws/install/cameras/share/ament_index/resource_index
+[2.238s] creating /home/wrs/factr_ws/install/cameras/share/ament_index/resource_index/packages
+[2.238s] symbolically linking /home/wrs/factr_ws/build/cameras/resource/cameras -> /home/wrs/factr_ws/install/cameras/share/ament_index/resource_index/packages
+[2.238s] symbolically linking /home/wrs/factr_ws/build/cameras/package.xml -> /home/wrs/factr_ws/install/cameras/share/cameras
+[2.309s] Invoked command in '/home/wrs/factr_ws/build/cameras' returned '0': PYTHONPATH=/home/wrs/factr_ws/build/cameras/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/wrs/factr_ws/install/cameras/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/wrs/factr_ws/build/cameras/build --no-deps symlink_data

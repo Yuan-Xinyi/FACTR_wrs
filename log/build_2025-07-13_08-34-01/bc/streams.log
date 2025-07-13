@@ -1,0 +1,30 @@
+[1.724s] Invoking command in '/home/wrs/factr_ws/build/bc': PYTHONPATH=/home/wrs/factr_ws/build/bc/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/wrs/factr_ws/install/bc/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/wrs/factr_ws/build/bc/build --no-deps symlink_data
+[2.028s] running develop
+[2.097s] /usr/lib/python3/dist-packages/pkg_resources/__init__.py:116: PkgResourcesDeprecationWarning: 2.22.1ubuntu1 is an invalid version and will not be supported in a future release
+[2.097s]   warnings.warn(
+[2.235s] running egg_info
+[2.235s] creating bc.egg-info
+[2.235s] writing bc.egg-info/PKG-INFO
+[2.235s] writing dependency_links to bc.egg-info/dependency_links.txt
+[2.235s] writing entry points to bc.egg-info/entry_points.txt
+[2.235s] writing requirements to bc.egg-info/requires.txt
+[2.235s] writing top-level names to bc.egg-info/top_level.txt
+[2.235s] writing manifest file 'bc.egg-info/SOURCES.txt'
+[2.237s] reading manifest file 'bc.egg-info/SOURCES.txt'
+[2.237s] writing manifest file 'bc.egg-info/SOURCES.txt'
+[2.239s] running build_ext
+[2.239s] Creating /home/wrs/factr_ws/install/bc/lib/python3.10/site-packages/bc.egg-link (link to .)
+[2.240s] Installing data_record script to /home/wrs/factr_ws/install/bc/lib/bc
+[2.240s] Installing data_sync script to /home/wrs/factr_ws/install/bc/lib/bc
+[2.240s] Installing franka_bridge script to /home/wrs/factr_ws/install/bc/lib/bc
+[2.240s] Installing policy_rollout script to /home/wrs/factr_ws/install/bc/lib/bc
+[2.240s] Installing replay_traj script to /home/wrs/factr_ws/install/bc/lib/bc
+[2.241s] 
+[2.241s] Installed /home/wrs/factr_ws/build/bc
+[2.241s] running symlink_data
+[2.241s] creating /home/wrs/factr_ws/install/bc/share/ament_index
+[2.241s] creating /home/wrs/factr_ws/install/bc/share/ament_index/resource_index
+[2.241s] creating /home/wrs/factr_ws/install/bc/share/ament_index/resource_index/packages
+[2.241s] symbolically linking /home/wrs/factr_ws/build/bc/resource/bc -> /home/wrs/factr_ws/install/bc/share/ament_index/resource_index/packages
+[2.241s] symbolically linking /home/wrs/factr_ws/build/bc/package.xml -> /home/wrs/factr_ws/install/bc/share/bc
+[2.293s] Invoked command in '/home/wrs/factr_ws/build/bc' returned '0': PYTHONPATH=/home/wrs/factr_ws/build/bc/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/wrs/factr_ws/install/bc/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/wrs/factr_ws/build/bc/build --no-deps symlink_data

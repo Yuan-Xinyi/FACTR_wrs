@@ -1,0 +1,7 @@
+[console_scripts]
+data_record = bc.data_record:main
+data_sync = bc.data_sync:main
+franka_bridge = bc.franka_bridge:main
+policy_rollout = bc.policy_rollout:main
+replay_traj = bc.replay_traj:main
+

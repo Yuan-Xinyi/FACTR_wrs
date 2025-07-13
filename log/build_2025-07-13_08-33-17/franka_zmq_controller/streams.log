@@ -1,0 +1,20 @@
+[0.834s] Invoking command in '/home/wrs/factr_ws/build/franka_zmq_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/wrs/factr_ws/install/python_utils:/home/wrs/factr_ws/install/factr_teleop:/home/wrs/factr_ws/install/cameras:/home/wrs/factr_ws/install/bc:/opt/ros/humble /usr/bin/cmake /home/wrs/factr_ws/src/franka_zmq_controller -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/wrs/factr_ws/install/franka_zmq_controller
+[0.885s] -- The C compiler identification is GNU 11.4.0
+[0.933s] -- The CXX compiler identification is GNU 11.4.0
+[0.940s] -- Detecting C compiler ABI info
+[0.997s] -- Detecting C compiler ABI info - done
+[1.004s] -- Check for working C compiler: /usr/bin/cc - skipped
+[1.005s] -- Detecting C compile features
+[1.005s] -- Detecting C compile features - done
+[1.008s] -- Detecting CXX compiler ABI info
+[1.075s] -- Detecting CXX compiler ABI info - done
+[1.082s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[1.082s] -- Detecting CXX compile features
+[1.083s] -- Detecting CXX compile features - done
+[1.083s] [31mCMake Error at CMakeLists.txt:5 (add_compile_features):
+[1.084s]   Unknown CMake command "add_compile_features".
+[1.084s] 
+[1.084s] [0m
+[1.084s] -- Configuring incomplete, errors occurred!
+[1.084s] See also "/home/wrs/factr_ws/build/franka_zmq_controller/CMakeFiles/CMakeOutput.log".
+[1.119s] Invoked command in '/home/wrs/factr_ws/build/franka_zmq_controller' returned '1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/wrs/factr_ws/install/python_utils:/home/wrs/factr_ws/install/factr_teleop:/home/wrs/factr_ws/install/cameras:/home/wrs/factr_ws/install/bc:/opt/ros/humble /usr/bin/cmake /home/wrs/factr_ws/src/franka_zmq_controller -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/wrs/factr_ws/install/franka_zmq_controller

@@ -1,0 +1,1 @@
+/home/wrs/factr_ws/build/franka_zmq_controller/ament_cmake_environment_hooks/local_setup.zsh

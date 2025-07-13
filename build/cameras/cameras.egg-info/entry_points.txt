@@ -1,0 +1,4 @@
+[console_scripts]
+realsense = cameras.realsense:main
+zed = cameras.zed:main
+

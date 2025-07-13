@@ -1,0 +1,20 @@
+[1.735s] Invoking command in '/home/wrs/factr_ws/build/cameras': PYTHONPATH=/home/wrs/factr_ws/build/cameras/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/wrs/factr_ws/install/cameras/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/wrs/factr_ws/build/cameras/build --no-deps symlink_data
+[2.029s] running develop
+[2.104s] /usr/lib/python3/dist-packages/pkg_resources/__init__.py:116: PkgResourcesDeprecationWarning: 2.22.1ubuntu1 is an invalid version and will not be supported in a future release
+[2.105s]   warnings.warn(
+[2.239s] running egg_info
+[2.239s] writing cameras.egg-info/PKG-INFO
+[2.240s] writing dependency_links to cameras.egg-info/dependency_links.txt
+[2.240s] writing entry points to cameras.egg-info/entry_points.txt
+[2.240s] writing requirements to cameras.egg-info/requires.txt
+[2.240s] writing top-level names to cameras.egg-info/top_level.txt
+[2.242s] reading manifest file 'cameras.egg-info/SOURCES.txt'
+[2.243s] writing manifest file 'cameras.egg-info/SOURCES.txt'
+[2.244s] running build_ext
+[2.245s] Creating /home/wrs/factr_ws/install/cameras/lib/python3.10/site-packages/cameras.egg-link (link to .)
+[2.245s] Installing realsense script to /home/wrs/factr_ws/install/cameras/lib/cameras
+[2.246s] Installing zed script to /home/wrs/factr_ws/install/cameras/lib/cameras
+[2.246s] 
+[2.246s] Installed /home/wrs/factr_ws/build/cameras
+[2.246s] running symlink_data
+[2.284s] Invoked command in '/home/wrs/factr_ws/build/cameras' returned '0': PYTHONPATH=/home/wrs/factr_ws/build/cameras/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/wrs/factr_ws/install/cameras/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/wrs/factr_ws/build/cameras/build --no-deps symlink_data
