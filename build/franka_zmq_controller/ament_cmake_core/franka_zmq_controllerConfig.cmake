@@ -16,7 +16,7 @@ set(_franka_zmq_controller_CONFIG_INCLUDED TRUE)
 
 # output package information
 if(NOT franka_zmq_controller_FIND_QUIETLY)
-  message(STATUS "Found franka_zmq_controller: 0.0.0 (${franka_zmq_controller_DIR})")
+  message(STATUS "Found franka_zmq_controller: 0.0.1 (${franka_zmq_controller_DIR})")
 endif()
 
 # warn when using a deprecated package

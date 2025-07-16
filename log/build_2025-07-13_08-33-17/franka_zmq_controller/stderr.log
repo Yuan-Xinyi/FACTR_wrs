@@ -1,4 +1,0 @@
-[31mCMake Error at CMakeLists.txt:5 (add_compile_features):
-  Unknown CMake command "add_compile_features".
-
-[0m

@@ -1,6 +1,6 @@
 CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o: \
  /home/wrs/factr_ws/src/franka_zmq_controller/src/controller_node.cpp \
- /usr/include/stdc-predef.h /opt/ros/humble/include/franka/robot.h \
+ /usr/include/stdc-predef.h /usr/local/include/franka/robot.h \
  /usr/include/c++/11/functional \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -169,7 +169,7 @@ CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o: \
  /usr/include/c++/11/bits/basic_string.tcc \
  /usr/include/c++/11/bits/std_mutex.h \
  /usr/include/c++/11/bits/unique_lock.h \
- /opt/ros/humble/include/franka/control_types.h /usr/include/c++/11/cmath \
+ /usr/local/include/franka/control_types.h /usr/include/c++/11/cmath \
  /usr/include/math.h /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
  /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
@@ -191,10 +191,10 @@ CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o: \
  /usr/include/c++/11/tr1/poly_hermite.tcc \
  /usr/include/c++/11/tr1/poly_laguerre.tcc \
  /usr/include/c++/11/tr1/riemann_zeta.tcc \
- /opt/ros/humble/include/franka/duration.h \
- /opt/ros/humble/include/franka/lowpass_filter.h \
- /opt/ros/humble/include/franka/robot_model_base.h \
- /opt/ros/humble/include/franka/robot_state.h /usr/include/c++/11/ostream \
+ /usr/local/include/franka/duration.h \
+ /usr/local/include/franka/lowpass_filter.h \
+ /usr/local/include/franka/robot_model_base.h \
+ /usr/local/include/franka/robot_state.h /usr/include/c++/11/ostream \
  /usr/include/c++/11/ios /usr/include/c++/11/bits/ios_base.h \
  /usr/include/c++/11/bits/locale_classes.h \
  /usr/include/c++/11/bits/locale_classes.tcc \
@@ -207,13 +207,12 @@ CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o: \
  /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h \
  /usr/include/c++/11/bits/locale_facets.tcc \
  /usr/include/c++/11/bits/basic_ios.tcc \
- /usr/include/c++/11/bits/ostream.tcc \
- /opt/ros/humble/include/franka/errors.h \
- /opt/ros/humble/include/research_interface/robot/service_types.h \
+ /usr/include/c++/11/bits/ostream.tcc /usr/local/include/franka/errors.h \
+ /usr/local/include/research_interface/robot/service_types.h \
  /usr/include/c++/11/cstring /usr/include/string.h /usr/include/strings.h \
- /opt/ros/humble/include/franka/commands/get_robot_model_command.hpp \
- /opt/ros/humble/include/franka/exception.h \
- /opt/ros/humble/include/franka/logging/robot_state_log.hpp \
+ /usr/local/include/franka/commands/get_robot_model_command.hpp \
+ /usr/local/include/franka/exception.h \
+ /usr/local/include/franka/logging/robot_state_log.hpp \
  /usr/include/c++/11/iostream /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc /usr/include/zmq.hpp \
  /usr/include/zmq.h /usr/include/c++/11/cassert /usr/include/assert.h \
@@ -227,6 +226,4 @@ CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o: \
  /usr/include/c++/11/bits/locale_facets_nonio.tcc \
  /usr/include/c++/11/bits/locale_conv.h \
  /usr/include/c++/11/bits/quoted_string.h /usr/include/c++/11/sstream \
- /usr/include/c++/11/bits/sstream.tcc /usr/include/c++/11/optional \
- /usr/include/c++/11/thread /usr/include/c++/11/bits/std_thread.h \
- /usr/include/c++/11/bits/this_thread_sleep.h
+ /usr/include/c++/11/bits/sstream.tcc /usr/include/c++/11/optional

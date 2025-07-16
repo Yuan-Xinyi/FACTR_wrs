@@ -29,7 +29,7 @@ from python_utils.utils import get_workspace_root
 from factr_teleop.dynamixel.driver import DynamixelDriver
 from setuptools.command.setopt import config_file
 
-
+sep = "-" * 60
 def find_ttyusb(port_name):
     """
     This function is used to locate the underlying ttyUSB device.
@@ -42,6 +42,7 @@ def find_ttyusb(port_name):
         resolved_path = os.readlink(full_path)
         actual_device = os.path.basename(resolved_path)
         if actual_device.startswith("ttyUSB"):
+            print(f"{sep}\n{sep}\nResolved symbolic link '{port_name}' to '{actual_device}'.\n{sep}\n{sep}")
             return actual_device
         else:
             raise Exception(
@@ -68,6 +69,7 @@ class FACTRTeleop(Node, ABC):
         super().__init__('factr_teleop')
 
         # config_file_name = self.declare_parameter('config_file', '').get_parameter_value().string_value
+        # config_file_name = 'grav_comp_demo.yaml'
         config_file_name = 'franka_example.yaml'
         config_path = os.path.join(get_workspace_root(), f"src/factr_teleop/factr_teleop/configs/{config_file_name}")
         with open(config_path, 'r') as config_file:
@@ -125,7 +127,7 @@ class FACTRTeleop(Node, ABC):
         self.set_up_communication()
 
         # calibrate the leader arm joints before starting
-        self._get_dynamixel_offsets()
+        self._get_dynamixel_offsets(verbose=True)
         # ensure the leader and the follower arms have the same joint positions before starting
         self._match_start_pos()
         # start the control loop
@@ -169,7 +171,7 @@ class FACTRTeleop(Node, ABC):
             return
         self.driver.set_torque_mode(False)
         # set operating mode to current mode
-        self.driver.set_operating_mode(0)
+        self.driver.set_operating_mode(0)  # 0 for current mode, 1 for position mode
         # enable torque
         self.driver.set_torque_mode(True)
 
@@ -214,7 +216,7 @@ class FACTRTeleop(Node, ABC):
             best_offset = 0
             best_error = 1e9
             # intervals of pi/2
-            for offset in np.linspace(-20 * np.pi, 20 * np.pi, 20 * 4 + 1):  
+            for offset in np.linspace(-20 * np.pi, 20 * np.pi, 20 * 40+ 1):  
                 error = _get_error(self.calibration_joint_pos, offset, i, curr_joints)
                 if error < best_error:
                     best_error = error
@@ -241,7 +243,7 @@ class FACTRTeleop(Node, ABC):
         follower arm before the follower arm starts mirroring the leader arm. 
         """
         curr_pos, _, _, _ = self.get_leader_joint_states()
-        while (np.linalg.norm(curr_pos - self.initial_match_joint_pos[0:self.num_arm_joints]) > 0.9):
+        while (np.linalg.norm(curr_pos - self.initial_match_joint_pos[0:self.num_arm_joints]) > 0.4):
             current_joint_error = np.linalg.norm(
                 curr_pos - self.initial_match_joint_pos[0:self.num_arm_joints]
             )
@@ -252,6 +254,7 @@ class FACTRTeleop(Node, ABC):
             curr_pos, _, _, _ = self.get_leader_joint_states()
             time.sleep(0.5)
         self.get_logger().info(f"FACTR TELEOP {self.name}: Initial joint position matched.")
+        print(f"FACTR TELEOP {self.name}: Initial joint position matched.")
 
     def shut_down(self):
         """
@@ -267,9 +270,11 @@ class FACTRTeleop(Node, ABC):
         """
         self.gripper_pos_prev = self.gripper_pos
         joint_pos, joint_vel = self.driver.get_positions_and_velocities()
+        print("before offset: ", joint_pos)
         joint_pos_arm = (
             joint_pos[0:self.num_arm_joints] - self.joint_offsets[0:self.num_arm_joints]
         ) * self.joint_signs[0:self.num_arm_joints]
+        print("after offset: ", joint_pos_arm)
         self.gripper_pos = (joint_pos[-1] - self.joint_offsets[-1]) * self.joint_signs[-1]
         joint_vel_arm = joint_vel[0:self.num_arm_joints] * self.joint_signs[0:self.num_arm_joints]
         
@@ -390,7 +395,7 @@ class FACTRTeleop(Node, ABC):
         J = pin.computeJointJacobian(
             self.pin_model, self.pin_data, arm_joint_pos, self.num_arm_joints
         )
-        J_dagger = np.linalg.pinv(J)
+        J_dagger = np.linalg.pinv(J, rcond=1e-6)
         null_space_projector = np.eye(self.num_arm_joints) - J_dagger @ J
         q_error = arm_joint_pos - self.null_space_joint_target[0:self.num_arm_joints]
         tau_n = null_space_projector @ (-self.null_space_kp*q_error-self.null_space_kd*arm_joint_vel)
@@ -424,19 +429,26 @@ class FACTRTeleop(Node, ABC):
             leader_arm_pos, leader_arm_vel, leader_gripper_pos, leader_gripper_vel
         )
         torque_arm += torque_l
+        print("before nullspace: ", torque_arm)
+        # wait(1)
         torque_arm += self.null_space_regulation(leader_arm_pos, leader_arm_vel)
+        print("after nullspace: ", torque_arm)
 
-        if self.enable_gravity_comp:
+        print('gravity comp is: ', self.enable_gravity_comp)
+        if self.enable_gravity_comp: 
             torque_arm += self.gravity_compensation(leader_arm_pos, leader_arm_vel)
-            torque_arm += self.friction_compensation(leader_arm_vel)
+            print("after gravity comp: ", torque_arm)
+            # torque_arm += self.friction_compensation(leader_arm_vel)
         
         if self.enable_torque_feedback:
             external_joint_torque = self.get_leader_arm_external_joint_torque()
             torque_arm += self.torque_feedback(external_joint_torque, leader_arm_vel)
+            print("after torque feedback: ", torque_arm)
         
         if self.enable_gripper_feedback:
             gripper_feedback = self.get_leader_gripper_feedback()
             torque_gripper += self.gripper_feedback(leader_gripper_pos, leader_gripper_vel, gripper_feedback)
+            print("after gripper feedback: ", torque_gripper)
 
         self.set_leader_joint_torque(torque_arm, torque_gripper)
         self.update_communication(leader_arm_pos, leader_gripper_pos)

@@ -1,0 +1,30 @@
+[0.011s] Invoking command in '/home/wrs/factr_ws/build/franka_zmq_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/wrs/factr_ws/install/python_utils:/home/wrs/factr_ws/install/factr_teleop:/home/wrs/factr_ws/install/cameras:/home/wrs/factr_ws/install/bc:/opt/ros/humble /usr/bin/cmake --build /home/wrs/factr_ws/build/franka_zmq_controller -- -j6 -l6
+[0.034s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.151s] -- Found rclcpp: 16.0.12 (/opt/ros/humble/share/rclcpp/cmake)
+[0.179s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.181s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.186s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.195s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.207s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.237s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.239s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.343s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.457s] -- Configuring done
+[0.460s] [31mCMake Error at CMakeLists.txt:13 (add_executable):
+[0.460s]   Target "franka_zmq_controller_node" links to target "Franka::franka" but
+[0.460s]   the target was not found.  Perhaps a find_package() call is missing for an
+[0.460s]   IMPORTED target, or an ALIAS target is missing?
+[0.460s] 
+[0.460s] [0m
+[0.462s] [31mCMake Error at CMakeLists.txt:17 (target_include_directories):
+[0.462s]   Error evaluating generator expression:
+[0.462s] 
+[0.462s]     $<TARGET_PROPERTY:Franka::franka,INTERFACE_INCLUDE_DIRECTORIES>
+[0.462s] 
+[0.462s]   Target "Franka::franka" not found.
+[0.462s] 
+[0.462s] [0m
+[0.464s] -- Generating done
+[0.465s] [0mCMake Generate step failed.  Build files cannot be regenerated correctly.[0m
+[0.471s] gmake: *** [Makefile:267: cmake_check_build_system] Error 1
+[0.474s] Invoked command in '/home/wrs/factr_ws/build/franka_zmq_controller' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/wrs/factr_ws/install/python_utils:/home/wrs/factr_ws/install/factr_teleop:/home/wrs/factr_ws/install/cameras:/home/wrs/factr_ws/install/bc:/opt/ros/humble /usr/bin/cmake --build /home/wrs/factr_ws/build/franka_zmq_controller -- -j6 -l6

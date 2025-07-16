@@ -50,7 +50,7 @@ class ZMQSubscriber:
         while(True):
             message = self._sub_socket.recv()
             self._value = np.frombuffer(message).astype(np.float64)
-            print("[ZMQ SUB] Received torque:", self._value)
+            # print("[ZMQ SUB] Received torque:", self._value)
 
 
 class ZMQPublisher:

@@ -3,7 +3,7 @@
 
 CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o: /home/wrs/factr_ws/src/franka_zmq_controller/src/controller_node.cpp \
   /usr/include/stdc-predef.h \
-  /opt/ros/humble/include/franka/robot.h \
+  /usr/local/include/franka/robot.h \
   /usr/include/c++/11/functional \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -211,7 +211,7 @@ CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o: /home/wrs/f
   /usr/include/c++/11/bits/basic_string.tcc \
   /usr/include/c++/11/bits/std_mutex.h \
   /usr/include/c++/11/bits/unique_lock.h \
-  /opt/ros/humble/include/franka/control_types.h \
+  /usr/local/include/franka/control_types.h \
   /usr/include/c++/11/cmath \
   /usr/include/math.h \
   /usr/include/x86_64-linux-gnu/bits/math-vector.h \
@@ -236,10 +236,10 @@ CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o: /home/wrs/f
   /usr/include/c++/11/tr1/poly_hermite.tcc \
   /usr/include/c++/11/tr1/poly_laguerre.tcc \
   /usr/include/c++/11/tr1/riemann_zeta.tcc \
-  /opt/ros/humble/include/franka/duration.h \
-  /opt/ros/humble/include/franka/lowpass_filter.h \
-  /opt/ros/humble/include/franka/robot_model_base.h \
-  /opt/ros/humble/include/franka/robot_state.h \
+  /usr/local/include/franka/duration.h \
+  /usr/local/include/franka/lowpass_filter.h \
+  /usr/local/include/franka/robot_model_base.h \
+  /usr/local/include/franka/robot_state.h \
   /usr/include/c++/11/ostream \
   /usr/include/c++/11/ios \
   /usr/include/c++/11/bits/ios_base.h \
@@ -258,14 +258,14 @@ CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o: /home/wrs/f
   /usr/include/c++/11/bits/locale_facets.tcc \
   /usr/include/c++/11/bits/basic_ios.tcc \
   /usr/include/c++/11/bits/ostream.tcc \
-  /opt/ros/humble/include/franka/errors.h \
-  /opt/ros/humble/include/research_interface/robot/service_types.h \
+  /usr/local/include/franka/errors.h \
+  /usr/local/include/research_interface/robot/service_types.h \
   /usr/include/c++/11/cstring \
   /usr/include/string.h \
   /usr/include/strings.h \
-  /opt/ros/humble/include/franka/commands/get_robot_model_command.hpp \
-  /opt/ros/humble/include/franka/exception.h \
-  /opt/ros/humble/include/franka/logging/robot_state_log.hpp \
+  /usr/local/include/franka/commands/get_robot_model_command.hpp \
+  /usr/local/include/franka/exception.h \
+  /usr/local/include/franka/logging/robot_state_log.hpp \
   /usr/include/c++/11/iostream \
   /usr/include/c++/11/istream \
   /usr/include/c++/11/bits/istream.tcc \
@@ -287,10 +287,7 @@ CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o: /home/wrs/f
   /usr/include/c++/11/bits/quoted_string.h \
   /usr/include/c++/11/sstream \
   /usr/include/c++/11/bits/sstream.tcc \
-  /usr/include/c++/11/optional \
-  /usr/include/c++/11/thread \
-  /usr/include/c++/11/bits/std_thread.h \
-  /usr/include/c++/11/bits/this_thread_sleep.h
+  /usr/include/c++/11/optional
 
 
 /usr/include/c++/11/optional:
@@ -321,13 +318,13 @@ CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o: /home/wrs/f
 
 /usr/include/c++/11/istream:
 
-/opt/ros/humble/include/franka/logging/robot_state_log.hpp:
-
-/opt/ros/humble/include/franka/exception.h:
+/usr/local/include/franka/exception.h:
 
 /usr/include/strings.h:
 
-/opt/ros/humble/include/research_interface/robot/service_types.h:
+/usr/local/include/research_interface/robot/service_types.h:
+
+/usr/local/include/franka/errors.h:
 
 /usr/include/c++/11/tr1/special_function_util.h:
 
@@ -363,8 +360,6 @@ CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o: /home/wrs/f
 
 /usr/include/c++/11/cwchar:
 
-/usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
-
 /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:
 
 /usr/include/c++/11/ext/aligned_buffer.h:
@@ -378,8 +373,6 @@ CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o: /home/wrs/f
 /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h:
 
 /usr/include/x86_64-linux-gnu/bits/waitflags.h:
-
-/usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
 
 /usr/include/locale.h:
 
@@ -399,11 +392,17 @@ CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o: /home/wrs/f
 
 /usr/include/x86_64-linux-gnu/bits/endianness.h:
 
+/usr/local/include/franka/robot.h:
+
 /usr/include/c++/11/tr1/modified_bessel_func.tcc:
 
 /usr/include/c++/11/bits/stl_vector.h:
 
 /usr/include/c++/11/system_error:
+
+/usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
+
+/usr/local/include/franka/robot_state.h:
 
 /usr/include/c++/11/bits/align.h:
 
@@ -417,8 +416,6 @@ CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o: /home/wrs/f
 
 /usr/include/c++/11/backward/binders.h:
 
-/opt/ros/humble/include/franka/commands/get_robot_model_command.hpp:
-
 /usr/include/c++/11/bits/hashtable_policy.h:
 
 /usr/include/c++/11/bits/hashtable.h:
@@ -427,11 +424,7 @@ CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o: /home/wrs/f
 
 /usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
 
-/opt/ros/humble/include/franka/lowpass_filter.h:
-
 /usr/include/c++/11/bits/functexcept.h:
-
-/opt/ros/humble/include/franka/robot_state.h:
 
 /usr/include/c++/11/streambuf:
 
@@ -451,9 +444,27 @@ CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o: /home/wrs/f
 
 /usr/include/c++/11/bits/functional_hash.h:
 
-/usr/include/c++/11/bits/stl_uninitialized.h:
+/usr/include/c++/11/ext/type_traits.h:
 
-/usr/include/c++/11/backward/auto_ptr.h:
+/usr/include/c++/11/pstl/glue_memory_defs.h:
+
+/usr/include/c++/11/bits/unordered_map.h:
+
+/usr/include/c++/11/ext/numeric_traits.h:
+
+/usr/include/c++/11/bits/atomic_base.h:
+
+/usr/include/errno.h:
+
+/usr/include/c++/11/tr1/exp_integral.tcc:
+
+/usr/include/c++/11/bits/stl_construct.h:
+
+/usr/include/c++/11/bits/shared_ptr.h:
+
+/usr/include/x86_64-linux-gnu/bits/byteswap.h:
+
+/usr/include/c++/11/bits/vector.tcc:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h:
 
@@ -475,30 +486,6 @@ CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o: /home/wrs/f
 
 /usr/include/c++/11/bits/char_traits.h:
 
-/usr/include/c++/11/ext/type_traits.h:
-
-/usr/include/c++/11/pstl/glue_memory_defs.h:
-
-/usr/include/c++/11/bits/unordered_map.h:
-
-/usr/include/c++/11/ext/numeric_traits.h:
-
-/usr/include/c++/11/bits/atomic_base.h:
-
-/usr/include/errno.h:
-
-/usr/include/features.h:
-
-/usr/include/c++/11/tr1/exp_integral.tcc:
-
-/usr/include/c++/11/bits/stl_construct.h:
-
-/usr/include/c++/11/bits/shared_ptr.h:
-
-/usr/include/x86_64-linux-gnu/bits/byteswap.h:
-
-/usr/include/c++/11/bits/vector.tcc:
-
 /usr/include/c++/11/bits/stl_algo.h:
 
 /usr/include/zmq.hpp:
@@ -517,11 +504,11 @@ CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o: /home/wrs/f
 
 /usr/include/x86_64-linux-gnu/sys/cdefs.h:
 
-/usr/include/c++/11/pstl/pstl_config.h:
-
 /usr/include/c++/11/type_traits:
 
 /usr/include/x86_64-linux-gnu/sys/single_threaded.h:
+
+/usr/local/include/franka/logging/robot_state_log.hpp:
 
 /usr/include/stdc-predef.h:
 
@@ -531,21 +518,11 @@ CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o: /home/wrs/f
 
 /usr/include/c++/11/bits/exception_defines.h:
 
-/opt/ros/humble/include/franka/robot.h:
-
 /usr/include/features-time64.h:
 
 /usr/include/c++/11/debug/debug.h:
 
-/opt/ros/humble/include/franka/errors.h:
-
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
-
-/usr/include/c++/11/bits/std_thread.h:
-
-/usr/include/c++/11/bits/stl_iterator_base_funcs.h:
-
-/usr/include/c++/11/bits/cpp_type_traits.h:
 
 /usr/include/pthread.h:
 
@@ -555,9 +532,21 @@ CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o: /home/wrs/f
 
 /usr/include/c++/11/bits/std_abs.h:
 
+/usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
+
+/usr/local/include/franka/robot_model_base.h:
+
 /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
+
+/usr/include/c++/11/bits/stl_uninitialized.h:
+
+/usr/include/c++/11/backward/auto_ptr.h:
+
+/usr/include/c++/11/bits/cpp_type_traits.h:
+
+/usr/include/c++/11/bits/stl_iterator_base_funcs.h:
 
 /usr/include/endian.h:
 
@@ -574,6 +563,10 @@ CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o: /home/wrs/f
 /home/wrs/factr_ws/src/franka_zmq_controller/src/controller_node.cpp:
 
 /usr/include/c++/11/unordered_map:
+
+/usr/include/c++/11/iomanip:
+
+/usr/include/c++/11/cctype:
 
 /usr/include/x86_64-linux-gnu/bits/typesizes.h:
 
@@ -653,6 +646,10 @@ CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o: /home/wrs/f
 
 /usr/include/c++/11/ext/concurrence.h:
 
+/usr/include/c++/11/pstl/pstl_config.h:
+
+/usr/local/include/franka/control_types.h:
+
 /usr/include/c++/11/ext/alloc_traits.h:
 
 /usr/include/x86_64-linux-gnu/bits/sched.h:
@@ -664,6 +661,10 @@ CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o: /home/wrs/f
 /usr/include/x86_64-linux-gnu/bits/setjmp.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
+
+/usr/include/features.h:
+
+/usr/local/include/franka/lowpass_filter.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
 
@@ -704,8 +705,6 @@ CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o: /home/wrs/f
 /usr/include/c++/11/chrono:
 
 /usr/include/c++/11/cstdio:
-
-/usr/include/c++/11/thread:
 
 /usr/include/c++/11/ratio:
 
@@ -754,8 +753,6 @@ CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o: /home/wrs/f
 /usr/include/c++/11/tr1/hypergeometric.tcc:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/c++locale.h:
-
-/opt/ros/humble/include/franka/control_types.h:
 
 /usr/include/c++/11/clocale:
 
@@ -819,7 +816,7 @@ CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o: /home/wrs/f
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
 
-/opt/ros/humble/include/franka/robot_model_base.h:
+/usr/local/include/franka/commands/get_robot_model_command.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/iscanonical.h:
 
@@ -845,11 +842,7 @@ CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o: /home/wrs/f
 
 /usr/include/c++/11/tr1/riemann_zeta.tcc:
 
-/usr/include/c++/11/iomanip:
-
-/usr/include/c++/11/cctype:
-
-/opt/ros/humble/include/franka/duration.h:
+/usr/local/include/franka/duration.h:
 
 /usr/include/c++/11/bits/uniform_int_dist.h:
 
@@ -860,8 +853,6 @@ CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o: /home/wrs/f
 /usr/include/c++/11/bits/streambuf_iterator.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h:
-
-/usr/include/c++/11/bits/this_thread_sleep.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
 

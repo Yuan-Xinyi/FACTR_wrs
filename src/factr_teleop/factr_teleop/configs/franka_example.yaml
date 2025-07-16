@@ -10,21 +10,26 @@ dynamixel:
   ]
   # Servo joint directions to match that of the leader arm
   # joint_signs: [1, 1, 1, 1, 1, -1, 1, -1]
-  joint_signs: [1, 1, 1, 1, 1, -1, 1, -1]
+  joint_signs: [1, -1, 1, -1, -1, -1, 1, -1]
   
 arm_teleop:
   # URDF used for creating leader arm dynamics model to compute gravity compensation
   leader_urdf: "factr_teleop_franka.urdf"
   num_arm_joints: 7
-  arm_joint_limits_max: [2.8973, 1.7628, 2.8973, -0.8698, 2.8973, 3.7525, 2.8973]
-  arm_joint_limits_min: [-2.8973, -1.7628, -2.8973, -3.0718, -2.8973, -0.0175, -2.8973]
+  arm_joint_limits_max: [2.8973, 1.7628, 2.8973, -0.8698, 2.8973, 4.6, 2.8973]
+  arm_joint_limits_min: [-2.8973, -1.7628, -2.8973, -3.0718, -2.8973, 0.45, -2.8973]
   arm_joint_limits_safety_margin: 0.1
   initialization:
     # The expected leader arm joint position before launching the script
     # calibration_joint_pos: [0.0, -0.7854, 0.0, -2.356, 0.0, 1.57, 0.0]
-    calibration_joint_pos: [0.0, -0.7854, 0.0, -2.356, 0.0, 1.57, 0.0]
+    # calibration_joint_pos: [0.0, -1.57, 0.0, -1.57, 0.0, 1.57, 0.0]
+    # calibration_joint_pos: [0.0, -0.7854, 0.0, -2.356, 0.0, 1.57, 0.0]
+    calibration_joint_pos: [ 2.69995560e-04, -7.83959110e-01, -8.77349769e-04, -2.44571401e+00,
+        5.50289750e-04,  1.57014661e+00,  8.78275170e-04]
     # The leader arm must be brought to this joint position before the follower starts mirroring the leader
-    initial_match_joint_pos: [0.0, -0.7854, 0.0, -2.356, 0.0, 1.57, 0.0]
+    # initial_match_joint_pos: [0.0, -0.7854, 0.0, -2.356, 0.0, 1.57, 0.0]
+    initial_match_joint_pos: [ 2.69995560e-04, -7.83959110e-01, -8.77349769e-04, -2.44571401e+00,
+        5.50289750e-04,  1.57014661e+00,  8.78275170e-04]
   
 gripper_teleop:
   # The maximum range (in rad) of the leader gripper trigger
@@ -33,7 +38,7 @@ gripper_teleop:
 controller:
   frequency: 500
   torque_feedback:
-    enable: True
+    enable: False
     gain: 3.0
     damping: 0.0
     motor_scalar: 94.5652173913
@@ -56,8 +61,8 @@ controller:
     kd: 0.04315069084
 
   gripper_feedback:
-    enable: True
-    gain: 0.28328611898
+    enable: False
+    gain: 0.28328611898  # can be smaller
     ema_beta: 0.95
 
 

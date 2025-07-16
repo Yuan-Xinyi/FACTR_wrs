@@ -1,0 +1,14 @@
+[35m[1mConsolidate compiler generated dependencies of target franka_zmq_controller_node[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o[0m
+[01m[K/home/wrs/factr_ws/src/franka_zmq_controller/src/controller_node.cpp:[m[K In function ‘[01m[Kint main()[m[K’:
+[01m[K/home/wrs/factr_ws/src/franka_zmq_controller/src/controller_node.cpp:80:104:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kfranka::ActiveMotionGenerator<franka::JointPositions>::ActiveMotionGenerator(std::array<double, 7>&, double)[m[K’
+   80 |     auto motion_callback = franka::ActiveMotionGenerator<franka::JointPositions>(smoothed_position, 0.2[01;31m[K)[m[K;
+      |                                                                                                        [01;31m[K^[m[K
+In file included from [01m[K/home/wrs/factr_ws/src/franka_zmq_controller/src/controller_node.cpp:3[m[K:
+[01m[K/usr/local/include/franka/active_motion_generator.h:55:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kfranka::ActiveMotionGenerator<MotionGeneratorType>::ActiveMotionGenerator(std::shared_ptr<franka::Robot::Impl>, uint32_t, std::unique_lock<std::mutex>, research_interface::robot::Move::ControllerMode) [with MotionGeneratorType = franka::JointPositions; uint32_t = unsigned int][m[K’
+   55 |   [01;36m[KActiveMotionGenerator[m[K(std::shared_ptr<Robot::Impl> robot_impl,
+      |   [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/usr/local/include/franka/active_motion_generator.h:55:3:[m[K [01;36m[Knote: [m[K  candidate expects 4 arguments, 2 provided
+gmake[2]: *** [CMakeFiles/franka_zmq_controller_node.dir/build.make:76: CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/franka_zmq_controller_node.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

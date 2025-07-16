@@ -63,6 +63,9 @@
         "thread": "cpp",
         "cinttypes": "cpp",
         "typeindex": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "any": "cpp",
+        "fstream": "cpp",
+        "variant": "cpp"
     }
 }

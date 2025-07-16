@@ -1,0 +1,25 @@
+[0.847s] Invoking command in '/home/wrs/factr_ws/build/franka_zmq_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/wrs/factr_ws/install/python_utils:/home/wrs/factr_ws/install/factr_teleop:/home/wrs/factr_ws/install/cameras:/home/wrs/factr_ws/install/bc:/opt/ros/humble /usr/bin/cmake --build /home/wrs/factr_ws/build/franka_zmq_controller -- -j6 -l6
+[0.895s] [ 50%] [32mBuilding CXX object CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o[0m
+[1.741s] [100%] [32m[1mLinking CXX executable franka_zmq_controller_node[0m
+[1.886s] [100%] Built target franka_zmq_controller_node
+[1.928s] Invoked command in '/home/wrs/factr_ws/build/franka_zmq_controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/wrs/factr_ws/install/python_utils:/home/wrs/factr_ws/install/factr_teleop:/home/wrs/factr_ws/install/cameras:/home/wrs/factr_ws/install/bc:/opt/ros/humble /usr/bin/cmake --build /home/wrs/factr_ws/build/franka_zmq_controller -- -j6 -l6
+[1.938s] Invoking command in '/home/wrs/factr_ws/build/franka_zmq_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/wrs/factr_ws/install/python_utils:/home/wrs/factr_ws/install/factr_teleop:/home/wrs/factr_ws/install/cameras:/home/wrs/factr_ws/install/bc:/opt/ros/humble /usr/bin/cmake --install /home/wrs/factr_ws/build/franka_zmq_controller
+[1.945s] -- Install configuration: ""
+[1.946s] -- Execute custom install script
+[1.946s] -- Up-to-date symlink: /home/wrs/factr_ws/install/franka_zmq_controller/lib/franka_zmq_controller/franka_zmq_controller_node
+[1.946s] -- Up-to-date symlink: /home/wrs/factr_ws/install/franka_zmq_controller/share/ament_index/resource_index/package_run_dependencies/franka_zmq_controller
+[1.946s] -- Up-to-date symlink: /home/wrs/factr_ws/install/franka_zmq_controller/share/ament_index/resource_index/parent_prefix_path/franka_zmq_controller
+[1.946s] -- Up-to-date symlink: /home/wrs/factr_ws/install/franka_zmq_controller/share/franka_zmq_controller/environment/ament_prefix_path.sh
+[1.946s] -- Up-to-date symlink: /home/wrs/factr_ws/install/franka_zmq_controller/share/franka_zmq_controller/environment/ament_prefix_path.dsv
+[1.948s] -- Up-to-date symlink: /home/wrs/factr_ws/install/franka_zmq_controller/share/franka_zmq_controller/environment/path.sh
+[1.949s] -- Up-to-date symlink: /home/wrs/factr_ws/install/franka_zmq_controller/share/franka_zmq_controller/environment/path.dsv
+[1.949s] -- Up-to-date symlink: /home/wrs/factr_ws/install/franka_zmq_controller/share/franka_zmq_controller/local_setup.bash
+[1.949s] -- Up-to-date symlink: /home/wrs/factr_ws/install/franka_zmq_controller/share/franka_zmq_controller/local_setup.sh
+[1.950s] -- Up-to-date symlink: /home/wrs/factr_ws/install/franka_zmq_controller/share/franka_zmq_controller/local_setup.zsh
+[1.950s] -- Up-to-date symlink: /home/wrs/factr_ws/install/franka_zmq_controller/share/franka_zmq_controller/local_setup.dsv
+[1.951s] -- Symlinking: /home/wrs/factr_ws/install/franka_zmq_controller/share/franka_zmq_controller/package.dsv
+[1.957s] -- Up-to-date symlink: /home/wrs/factr_ws/install/franka_zmq_controller/share/ament_index/resource_index/packages/franka_zmq_controller
+[1.958s] -- Up-to-date symlink: /home/wrs/factr_ws/install/franka_zmq_controller/share/franka_zmq_controller/cmake/franka_zmq_controllerConfig.cmake
+[1.959s] -- Up-to-date symlink: /home/wrs/factr_ws/install/franka_zmq_controller/share/franka_zmq_controller/cmake/franka_zmq_controllerConfig-version.cmake
+[1.959s] -- Up-to-date symlink: /home/wrs/factr_ws/install/franka_zmq_controller/share/franka_zmq_controller/package.xml
+[1.963s] Invoked command in '/home/wrs/factr_ws/build/franka_zmq_controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/wrs/factr_ws/install/python_utils:/home/wrs/factr_ws/install/factr_teleop:/home/wrs/factr_ws/install/cameras:/home/wrs/factr_ws/install/bc:/opt/ros/humble /usr/bin/cmake --install /home/wrs/factr_ws/build/franka_zmq_controller

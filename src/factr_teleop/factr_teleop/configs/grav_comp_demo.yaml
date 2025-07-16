@@ -15,8 +15,8 @@ arm_teleop:
   # URDF used for creating leader arm dynamics model to compute gravity compensation
   leader_urdf: "factr_teleop_franka.urdf"
   num_arm_joints: 7
-  arm_joint_limits_max: [2.8973, 1.7628, 2.8973, -0.8698, 2.8973, 3.7525, 2.8973]
-  arm_joint_limits_min: [-2.8973, -1.7628, -2.8973, -3.0718, -2.8973, -0.0175, -2.8973]
+  arm_joint_limits_max: [2.8973, 1.7628, 2.8973, -0.8698, 2.8973, 4.6, 2.8973]
+  arm_joint_limits_min: [-2.8973, -1.7628, -2.8973, -3.0718, -2.8973, 0.45, -2.8973]
   arm_joint_limits_safety_margin: 0.1
   initialization:
     # The expected leader arm joint position before launching the script
@@ -29,52 +29,29 @@ gripper_teleop:
   actuation_range: 0.8
 
 controller:
-  frequency: 500
+  frequency: 125
   torque_feedback:
     enable: False
-    gain: 0.0
+    gain: 3.0
     damping: 0.0
     motor_scalar: 94.5652173913
-  # gravity_comp:
-  #   enable: True
-  #   gain: 0.85 # 0.85
-  # null_space_regulation:
-  #   null_space_joint_target: [0.0, -0.7854, 0.0, -2.356, 0.0, 1.57, 0.0, 0.0]
-  #   kp: 0.0 # 0.1
-  #   kd: 0.0 # 0.01
-  # static_friction_comp:
-  #   enable_speed: 0.9
-  #   gain: 0.6 # 0.6
-  # joint_limit_barrier:
-  #   kp: 1.03561658022
-  #   kd: 0.04315069084
-  # joint_position_control:
-  #   interpolation_step_size: 0.5
-  #   kp: 1.03561658022
-  #   kd: 0.04315069084
-
   gravity_comp:
     enable: True
-    gain: 0.6
-
+    gain: 0.85
+  null_space_regulation:
+    null_space_joint_target: [0.0, -0.7854, 0.0, -2.356, 0.0, 1.57, 0.0, 0.0]
+    kp: 0.1
+    kd: 0.01
   static_friction_comp:
     enable_speed: 0.9
-    gain: 0.2
-
-  null_space_regulation:
-    kp: 0.0
-    kd: 0.0
-
+    gain: 0.6
   joint_limit_barrier:
-    kp: 0.5
-    kd: 0.02
-
+    kp: 1.03561658022
+    kd: 0.04315069084
   joint_position_control:
-    kp: 0.6
-    kd: 0.02
-
+    interpolation_step_size: 0.5
+    kp: 1.03561658022
+    kd: 0.04315069084
 
   gripper_feedback:
     enable: False
-
-

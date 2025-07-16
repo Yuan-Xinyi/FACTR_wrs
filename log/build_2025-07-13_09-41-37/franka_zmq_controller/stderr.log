@@ -1,4 +1,0 @@
-[01m[K/home/wrs/factr_ws/src/franka_zmq_controller/src/controller_node.cpp:[m[K In lambda function:
-[01m[K/home/wrs/factr_ws/src/franka_zmq_controller/src/controller_node.cpp:43:49:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kstate[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
-   43 |     robot.control([&]([01;35m[Kconst franka::RobotState& state[m[K, franka::Duration) -> franka::JointPositions {
-      |                       [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~[m[K

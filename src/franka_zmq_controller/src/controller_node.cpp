@@ -4,18 +4,20 @@
 #include <array>
 #include <string>
 #include <zmq.hpp>
-#include <thread>
-#include <chrono>
-#include <iomanip>  // for std::setprecision
 
-const std::string robot_ip = "10.0.2.102";
-const std::string pos_cmd_sub_address = "tcp://10.0.2.105:2098";  // 接收位置指令
-const std::string torque_pub_address   = "tcp://*:3087";          // 发布 torque
-const std::string state_pub_address    = "tcp://*:3099";          // 发布 joint state（q, dq）
+// ===== CONFIGURATION =====
+const std::string robot_ip    = "10.0.2.103";         // follower robot IP
+const std::string pos_cmd_sub = "tcp://10.0.2.105:2098"; // leader q subscriber
+const std::string torque_pub  = "tcp://*:3087";       // follower torque publisher
+const std::string state_pub   = "tcp://*:3099";       // follower state publisher
+// =========================
 
 int main() {
   try {
+    // 1) Connect to Franka Robot
     franka::Robot robot(robot_ip);
+
+    // 2) Set collision behavior thresholds (safety)
     robot.setCollisionBehavior(
         {{20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0}},
         {{20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0}},
@@ -23,74 +25,71 @@ int main() {
         {{20.0, 20.0, 20.0, 20.0, 20.0, 20.0}}
     );
 
-    zmq::context_t context(1);
+    // 3) ZeroMQ Context + Sockets
+    zmq::context_t ctx(1);
 
-    // 订阅来自 Python 的位置指令
-    zmq::socket_t pos_sub(context, ZMQ_SUB);
-    pos_sub.connect(pos_cmd_sub_address);
-    pos_sub.set(zmq::sockopt::subscribe, "");
+    // --- Subscriber: Leader joint angles ---
+    zmq::socket_t sub(ctx, ZMQ_SUB);
+    sub.connect(pos_cmd_sub);
+    sub.set(zmq::sockopt::subscribe, "");
 
-    // 发布外部力矩
-    zmq::socket_t torque_pub(context, ZMQ_PUB);
-    torque_pub.bind(torque_pub_address);
+    // --- Publisher: Torque command ---
+    zmq::socket_t pub_tau(ctx, ZMQ_PUB);
+    pub_tau.bind(torque_pub);
 
-    // 发布 joint 状态（q 和 dq）
-    zmq::socket_t state_pub(context, ZMQ_PUB);
-    state_pub.bind(state_pub_address);
+    // --- Publisher: Follower joint state ---
+    zmq::socket_t pub_state(ctx, ZMQ_PUB);
+    pub_state.bind(state_pub);
 
-    std::cout << "[INFO] Franka follower started.\n"
-              << "  Subscribing position  @ " << pos_cmd_sub_address << "\n"
-              << "  Publishing torque     @ " << torque_pub_address << "\n"
-              << "  Publishing jointstate @ " << state_pub_address << std::endl;
+    // Buffer for latest leader q
+    std::array<double, 7> latest_leader_q{};
+    bool have_leader_data = false;
 
-    // 初始位置设为当前状态
-    franka::RobotState initial_state = robot.readOnce();
-    std::array<double, 7> latest_position = initial_state.q;
+    std::cout << "[INFO] Starting torque control loop..." << std::endl;
 
-    robot.control([&](const franka::RobotState& state, franka::Duration) -> franka::JointPositions {
-      // === 接收位置指令 ===
+    // 4) Torque control loop
+    robot.control([&](const franka::RobotState& state,
+                      franka::Duration /*period*/) -> franka::Torques {
+
+      // ---- Try receive latest leader q (non-blocking) ----
       zmq::message_t msg;
-      if (pos_sub.recv(msg, zmq::recv_flags::dontwait)) {
-        if (msg.size() == sizeof(double) * 7) {
-          std::memcpy(latest_position.data(), msg.data(), sizeof(double) * 7);
-          std::cout << "[RECV] Position: ";
-          for (double q : latest_position)
-            std::cout << std::fixed << std::setprecision(4) << q << " ";
-          std::cout << std::endl;
-        } else {
-          std::cerr << "[WARN] Received message with wrong size: " << msg.size() << std::endl;
-        }
+      zmq::recv_result_t res = sub.recv(msg, zmq::recv_flags::dontwait);
+      if (res && msg.size() == sizeof(double) * 7) {
+        std::memcpy(latest_leader_q.data(), msg.data(), sizeof(double) * 7);
+        have_leader_data = true;
       }
 
-      // === 发布力矩 ===
-      zmq::message_t torque_msg(sizeof(double) * 7);
-      std::memcpy(torque_msg.data(), state.tau_ext_hat_filtered.data(), sizeof(double) * 7);
-      torque_pub.send(torque_msg, zmq::send_flags::dontwait);
+      // ---- PD Controller Gains ----
+      std::vector<double> Kp = {30, 30, 30, 30, 15, 15, 15};
+      std::vector<double> Kd = {0.5, 0.5, 0.5, 0.5, 0.25, 0.25, 0.25};
 
-      std::cout << "[SEND] Torque: ";
-      for (double tau : state.tau_ext_hat_filtered)
-        std::cout << std::fixed << std::setprecision(4) << tau << " ";
-      std::cout << std::endl;
+      std::array<double,7> tau{};
 
-      // === 发布 joint 状态（q, dq） ===
-      zmq::message_t state_msg(sizeof(double) * 14);
-      std::memcpy(state_msg.data(), state.q.data(), sizeof(double) * 7);
-      std::memcpy(static_cast<char*>(state_msg.data()) + sizeof(double) * 7,
-                  state.dq.data(), sizeof(double) * 7);
-      state_pub.send(state_msg, zmq::send_flags::dontwait);
+      if (have_leader_data) {
+        // ---- Compute torque command ----
+        for (size_t i = 0; i < 7; i++) {
+          double pos_error = latest_leader_q[i] - state.q[i];   // leader - follower
+          double vel_error = -state.dq[i];                      // want zero velocity
+          tau[i] = Kp[i] * pos_error + Kd[i] * vel_error;
+        }
+      } else {
+        // No leader data yet → hold current position (zero torque)
+        tau.fill(0.0);
+      }
 
-      std::cout << "[SEND] JointState (q, dq): ";
-      for (int i = 0; i < 7; ++i)
-        std::cout << std::fixed << std::setprecision(4) << state.q[i] << "/" << state.dq[i] << " ";
-      std::cout << std::endl;
+      // ---- Publish torque command ----
+      pub_tau.send(zmq::buffer(tau), zmq::send_flags::dontwait);
 
-      return franka::JointPositions(latest_position);
+      // ---- Publish follower current joint state ----
+      pub_state.send(zmq::buffer(state.q), zmq::send_flags::dontwait);
+
+      return tau;
     });
 
+    return 0;
+
   } catch (const franka::Exception& e) {
-    std::cerr << "[ERROR] LibFranka Exception: " << e.what() << std::endl;
+    std::cerr << "Franka Exception: " << e.what() << std::endl;
     return -1;
   }
-
-  return 0;
 }

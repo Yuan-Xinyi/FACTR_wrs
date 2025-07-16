@@ -1,0 +1,64 @@
+[01m[K/home/wrs/factr_ws/src/franka_zmq_controller/src/controller_node.cpp:[m[K In function ‘[01m[Kint main()[m[K’:
+[01m[K/home/wrs/factr_ws/src/franka_zmq_controller/src/controller_node.cpp:80:98:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kfranka::ActiveMotionGenerator<franka::JointPositions>::ActiveMotionGenerator(std::array<double, 7>&, double)[m[K’
+   80 |     franka::ActiveMotionGenerator<franka::JointPositions> motion_generator(smoothed_position, 0.2[01;31m[K)[m[K;
+      |                                                                                                  [01;31m[K^[m[K
+In file included from [01m[K/home/wrs/factr_ws/src/franka_zmq_controller/src/controller_node.cpp:3[m[K:
+[01m[K/usr/local/include/franka/active_motion_generator.h:55:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kfranka::ActiveMotionGenerator<MotionGeneratorType>::ActiveMotionGenerator(std::shared_ptr<franka::Robot::Impl>, uint32_t, std::unique_lock<std::mutex>, research_interface::robot::Move::ControllerMode) [with MotionGeneratorType = franka::JointPositions; uint32_t = unsigned int][m[K’
+   55 |   [01;36m[KActiveMotionGenerator[m[K(std::shared_ptr<Robot::Impl> robot_impl,
+      |   [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/usr/local/include/franka/active_motion_generator.h:55:3:[m[K [01;36m[Knote: [m[K  candidate expects 4 arguments, 2 provided
+[01m[K/home/wrs/factr_ws/src/franka_zmq_controller/src/controller_node.cpp:81:18:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kfranka::Robot::control(franka::ActiveMotionGenerator<franka::JointPositions>&)[m[K’
+   81 |     [01;31m[Krobot.control(motion_generator)[m[K;
+      |     [01;31m[K~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/home/wrs/factr_ws/src/franka_zmq_controller/src/controller_node.cpp:1[m[K:
+[01m[K/usr/local/include/franka/robot.h:175:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid franka::Robot::control(std::function<franka::Torques(const franka::RobotState&, franka::Duration)>, bool, double)[m[K’
+  175 |   void [01;36m[Kcontrol[m[K(std::function<Torques(const RobotState&, franka::Duration)> control_callback,
+      |        [01;36m[K^~~~~~~[m[K
+[01m[K/usr/local/include/franka/robot.h:175:76:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kfranka::ActiveMotionGenerator<franka::JointPositions>[m[K’ to ‘[01m[Kstd::function<franka::Torques(const franka::RobotState&, franka::Duration)>[m[K’
+  175 |   void control([01;36m[Kstd::function<Torques(const RobotState&, franka::Duration)> control_callback[m[K,
+      |                [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~[m[K
+[01m[K/usr/local/include/franka/robot.h:203:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid franka::Robot::control(std::function<franka::Torques(const franka::RobotState&, franka::Duration)>, std::function<franka::JointPositions(const franka::RobotState&, franka::Duration)>, bool, double)[m[K’
+  203 |   void [01;36m[Kcontrol[m[K(
+      |        [01;36m[K^~~~~~~[m[K
+[01m[K/usr/local/include/franka/robot.h:203:8:[m[K [01;36m[Knote: [m[K  candidate expects 4 arguments, 1 provided
+[01m[K/usr/local/include/franka/robot.h:233:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid franka::Robot::control(std::function<franka::Torques(const franka::RobotState&, franka::Duration)>, std::function<franka::JointVelocities(const franka::RobotState&, franka::Duration)>, bool, double)[m[K’
+  233 |   void [01;36m[Kcontrol[m[K(
+      |        [01;36m[K^~~~~~~[m[K
+[01m[K/usr/local/include/franka/robot.h:233:8:[m[K [01;36m[Knote: [m[K  candidate expects 4 arguments, 1 provided
+[01m[K/usr/local/include/franka/robot.h:263:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid franka::Robot::control(std::function<franka::Torques(const franka::RobotState&, franka::Duration)>, std::function<franka::CartesianPose(const franka::RobotState&, franka::Duration)>, bool, double)[m[K’
+  263 |   void [01;36m[Kcontrol[m[K(
+      |        [01;36m[K^~~~~~~[m[K
+[01m[K/usr/local/include/franka/robot.h:263:8:[m[K [01;36m[Knote: [m[K  candidate expects 4 arguments, 1 provided
+[01m[K/usr/local/include/franka/robot.h:293:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid franka::Robot::control(std::function<franka::Torques(const franka::RobotState&, franka::Duration)>, std::function<franka::CartesianVelocities(const franka::RobotState&, franka::Duration)>, bool, double)[m[K’
+  293 |   void [01;36m[Kcontrol[m[K(std::function<Torques(const RobotState&, franka::Duration)> control_callback,
+      |        [01;36m[K^~~~~~~[m[K
+[01m[K/usr/local/include/franka/robot.h:293:8:[m[K [01;36m[Knote: [m[K  candidate expects 4 arguments, 1 provided
+[01m[K/usr/local/include/franka/robot.h:321:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid franka::Robot::control(std::function<franka::JointPositions(const franka::RobotState&, franka::Duration)>, franka::ControllerMode, bool, double)[m[K’
+  321 |   void [01;36m[Kcontrol[m[K(
+      |        [01;36m[K^~~~~~~[m[K
+[01m[K/usr/local/include/franka/robot.h:322:74:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kfranka::ActiveMotionGenerator<franka::JointPositions>[m[K’ to ‘[01m[Kstd::function<franka::JointPositions(const franka::RobotState&, franka::Duration)>[m[K’
+  322 |       [01;36m[Kstd::function<JointPositions(const RobotState&, franka::Duration)> motion_generator_callback[m[K,
+      |       [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/usr/local/include/franka/robot.h:349:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid franka::Robot::control(std::function<franka::JointVelocities(const franka::RobotState&, franka::Duration)>, franka::ControllerMode, bool, double)[m[K’
+  349 |   void [01;36m[Kcontrol[m[K(
+      |        [01;36m[K^~~~~~~[m[K
+[01m[K/usr/local/include/franka/robot.h:350:75:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kfranka::ActiveMotionGenerator<franka::JointPositions>[m[K’ to ‘[01m[Kstd::function<franka::JointVelocities(const franka::RobotState&, franka::Duration)>[m[K’
+  350 |       [01;36m[Kstd::function<JointVelocities(const RobotState&, franka::Duration)> motion_generator_callback[m[K,
+      |       [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/usr/local/include/franka/robot.h:377:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid franka::Robot::control(std::function<franka::CartesianPose(const franka::RobotState&, franka::Duration)>, franka::ControllerMode, bool, double)[m[K’
+  377 |   void [01;36m[Kcontrol[m[K(
+      |        [01;36m[K^~~~~~~[m[K
+[01m[K/usr/local/include/franka/robot.h:378:73:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kfranka::ActiveMotionGenerator<franka::JointPositions>[m[K’ to ‘[01m[Kstd::function<franka::CartesianPose(const franka::RobotState&, franka::Duration)>[m[K’
+  378 |       [01;36m[Kstd::function<CartesianPose(const RobotState&, franka::Duration)> motion_generator_callback[m[K,
+      |       [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/usr/local/include/franka/robot.h:405:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid franka::Robot::control(std::function<franka::CartesianVelocities(const franka::RobotState&, franka::Duration)>, franka::ControllerMode, bool, double)[m[K’
+  405 |   void [01;36m[Kcontrol[m[K(std::function<CartesianVelocities(const RobotState&, franka::Duration)>
+      |        [01;36m[K^~~~~~~[m[K
+[01m[K/usr/local/include/franka/robot.h:406:20:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kfranka::ActiveMotionGenerator<franka::JointPositions>[m[K’ to ‘[01m[Kstd::function<franka::CartesianVelocities(const franka::RobotState&, franka::Duration)>[m[K’
+  405 |   void control([01;36m[Kstd::function<CartesianVelocities(const RobotState&, franka::Duration)>[m[K
+      |                [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+  406 | [01;36m[K                   motion_generator_callback[m[K,
+      |                    [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/franka_zmq_controller_node.dir/build.make:76: CMakeFiles/franka_zmq_controller_node.dir/src/controller_node.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/franka_zmq_controller_node.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

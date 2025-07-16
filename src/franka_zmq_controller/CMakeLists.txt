@@ -1,51 +1,30 @@
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.10)
 project(franka_zmq_controller)
 
-# 编译器警告（可选）
-if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-  add_compile_options(-Wall -Wextra -Wpedantic)
-endif()
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# 找 ROS2 依赖
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
-find_package(sensor_msgs REQUIRED)
-find_package(std_msgs REQUIRED)
-find_package(Franka REQUIRED)
-
-# ZeroMQ
+find_package(franka REQUIRED)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(ZMQ REQUIRED libzmq)
 
-# 添加可执行文件
-add_executable(franka_zmq_controller_node
-  src/controller_node.cpp
-)
+add_executable(franka_zmq_controller_node src/controller_node.cpp)
 
-# 添加 C++17 标准（注意：要在 add_executable 之后）
-target_compile_features(franka_zmq_controller_node PUBLIC cxx_std_17)
-
-# 包含头文件路径
 target_include_directories(franka_zmq_controller_node PRIVATE
   ${ZMQ_INCLUDE_DIRS}
-  ${Franka_INCLUDE_DIRS}
+  ${franka_INCLUDE_DIRS}       # franka 包里导出的 include 路径
   include
 )
 
-# 链接库
 target_link_libraries(franka_zmq_controller_node
   ${ZMQ_LIBRARIES}
-  franka
+  franka                       # 链接 franka 库
 )
 
-# ROS 依赖
-ament_target_dependencies(franka_zmq_controller_node
-  rclcpp
-  sensor_msgs
-  std_msgs
-)
+ament_target_dependencies(franka_zmq_controller_node rclcpp)
 
-# 安装
 install(TARGETS franka_zmq_controller_node
   DESTINATION lib/${PROJECT_NAME}
 )
