@@ -89,6 +89,7 @@ class FACTRTeleop(Node, ABC):
         self.arm_joint_limits_min = np.array(self.config["arm_teleop"]["arm_joint_limits_min"]) + self.safety_margin
         self.calibration_joint_pos = np.array(self.config["arm_teleop"]["initialization"]["calibration_joint_pos"])
         self.initial_match_joint_pos = np.array(self.config["arm_teleop"]["initialization"]["initial_match_joint_pos"])
+
         assert self.num_arm_joints == len(self.arm_joint_limits_max) == len(self.arm_joint_limits_min), \
             "num_arm_joints and the length of arm joint limits must be the same"
         assert self.num_arm_joints == len(self.calibration_joint_pos) == len(self.initial_match_joint_pos), \
@@ -270,11 +271,11 @@ class FACTRTeleop(Node, ABC):
         """
         self.gripper_pos_prev = self.gripper_pos
         joint_pos, joint_vel = self.driver.get_positions_and_velocities()
-        print("before offset: ", joint_pos)
+        # print("before offset: ", joint_pos)
         joint_pos_arm = (
             joint_pos[0:self.num_arm_joints] - self.joint_offsets[0:self.num_arm_joints]
         ) * self.joint_signs[0:self.num_arm_joints]
-        print("after offset: ", joint_pos_arm)
+        # print("after offset: ", joint_pos_arm)
         self.gripper_pos = (joint_pos[-1] - self.joint_offsets[-1]) * self.joint_signs[-1]
         joint_vel_arm = joint_vel[0:self.num_arm_joints] * self.joint_signs[0:self.num_arm_joints]
         
@@ -429,26 +430,21 @@ class FACTRTeleop(Node, ABC):
             leader_arm_pos, leader_arm_vel, leader_gripper_pos, leader_gripper_vel
         )
         torque_arm += torque_l
-        print("before nullspace: ", torque_arm)
-        # wait(1)
         torque_arm += self.null_space_regulation(leader_arm_pos, leader_arm_vel)
-        print("after nullspace: ", torque_arm)
 
-        print('gravity comp is: ', self.enable_gravity_comp)
         if self.enable_gravity_comp: 
             torque_arm += self.gravity_compensation(leader_arm_pos, leader_arm_vel)
-            print("after gravity comp: ", torque_arm)
             # torque_arm += self.friction_compensation(leader_arm_vel)
         
         if self.enable_torque_feedback:
             external_joint_torque = self.get_leader_arm_external_joint_torque()
             torque_arm += self.torque_feedback(external_joint_torque, leader_arm_vel)
-            print("after torque feedback: ", torque_arm)
+            print(f'torque feedback: {np.round(self.torque_feedback(external_joint_torque, leader_arm_vel), 4)}')
         
         if self.enable_gripper_feedback:
             gripper_feedback = self.get_leader_gripper_feedback()
             torque_gripper += self.gripper_feedback(leader_gripper_pos, leader_gripper_vel, gripper_feedback)
-            print("after gripper feedback: ", torque_gripper)
+            print(f'gripper feedback: {np.round(self.gripper_feedback(leader_gripper_pos, leader_gripper_vel, gripper_feedback), 4)}')
 
         self.set_leader_joint_torque(torque_arm, torque_gripper)
         self.update_communication(leader_arm_pos, leader_gripper_pos)

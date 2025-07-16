@@ -1,0 +1,63 @@
+# === PYTHON ===
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.env
+.venv
+venv/
+pip-wheel-metadata/
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints/
+
+# PyInstaller
+*.spec
+
+# === C++ ===
+*.o
+*.obj
+*.gch
+*.out
+*.exe
+*.a
+*.so
+*.dll
+*.dylib
+
+# CMake build directory
+/build/
+/cmake-build-*/
+
+# Makefile products
+Makefile
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+compile_commands.json
+CTestTestfile.cmake
+install_manifest.txt
+
+# === EDITOR/IDE ===
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# === OS FILES ===
+.DS_Store
+Thumbs.db
+
+# === LOG FILES ===
+*.log
+
+# === OTHERS (optional) ===
+*.swp
+*.bak
+*.tmp
