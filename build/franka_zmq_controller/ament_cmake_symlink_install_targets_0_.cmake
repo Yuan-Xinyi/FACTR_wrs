@@ -1,1 +1,0 @@
-ament_cmake_symlink_install_targets("TARGET_FILES" "/home/wrs/factr_ws/build/franka_zmq_controller/franka_zmq_controller_node" "TARGETS" "franka_zmq_controller_node" "DESTINATION" "lib/franka_zmq_controller")
