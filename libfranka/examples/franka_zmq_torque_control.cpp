@@ -47,31 +47,129 @@ int main() {
     std::atomic<bool> stop_thread{false};
 
     // 4) Gripper control in separate thread
-    std::thread gripper_thread([&]() {
-      double last_cmd = -1.0;
+    // std::thread gripper_thread([&]() {
+    //   double last_cmd = -1.0;
+    //   while (!stop_thread.load()) {
+    //     if (have_leader_data.load()) {
+    //       double cmd = latest_leader_gripper.load();
+    //       if (std::abs(cmd - last_cmd) > 1e-4) {
+    //         bool ok = false;
+    //         try {
+    //           ok = gripper.move(cmd, 0.1);
+    //         } catch (const franka::Exception &e) {
+    //           std::cerr << "[GRIPPER ERROR] " << e.what() << std::endl;
+    //         }
+    //         if (ok) {
+    //           std::cout << "[GRIPPER] Moved to " << cmd << " m" << std::endl;
+    //           last_cmd = cmd;
+    //         } else {
+    //           std::cerr << "[GRIPPER WARNING] Move failed or returned false" << std::endl;
+    //         }
+    //       }
+    //     }
+    //     std::this_thread::sleep_for(std::chrono::milliseconds(50));
+    //   }
+    // });
+
+    std::cout << "[INFO] Starting torque control callback..." << std::endl;
+  
+    // 4) Gripper binary control in separate thread
+    // std::thread gripper_thread([&]() {
+    //   bool last_grasp_state = false;  // false 表示张开, true 表示抓取
+    //   while (!stop_thread.load()) {
+    //     if (have_leader_data.load()) {
+    //       double cmd = latest_leader_gripper.load();
+    //       bool grasp_now = (cmd <= 0.05);  // 宽度 ≤ 5cm 时抓取
+
+    //       if (grasp_now != last_grasp_state) {
+    //         try {
+    //           bool ok = false;
+    //           if (grasp_now) {
+    //             // 尝试抓取（夹紧至 0.015m，速度 0.1m/s，力 20N）
+    //             ok = gripper.grasp(0.015, 0.1, 20.0);
+    //             if (ok) {
+    //               std::cout << "[GRIPPER] Grasped object." << std::endl;
+    //               auto state = gripper.readOnce();
+    //               if (!state.is_grasped) {
+    //                 std::cerr << "[GRIPPER] Warning: Object not actually grasped!" << std::endl;
+    //               }
+    //             } else {
+    //               std::cerr << "[GRIPPER] Grasp failed." << std::endl;
+    //             }
+    //           } else {
+    //             // 张开夹爪（最大宽度约为 8cm）
+    //             ok = gripper.move(0.08, 0.1);
+    //             if (ok) {
+    //               std::cout << "[GRIPPER] Gripper opened." << std::endl;
+    //             } else {
+    //               std::cerr << "[GRIPPER] Failed to open gripper." << std::endl;
+    //             }
+    //           }
+    //           last_grasp_state = grasp_now;
+    //         } catch (const franka::Exception &e) {
+    //           std::cerr << "[GRIPPER ERROR] " << e.what() << std::endl;
+    //         }
+    //       }
+    //     }
+
+    //     std::this_thread::sleep_for(std::chrono::milliseconds(50));
+    //   }
+    // });
+
+      std::thread gripper_thread([&]() {
+      bool last_grasp_state = false;  // false: open, true: grasp
+      bool locked = false;            // 是否已经成功抓住并锁定
       while (!stop_thread.load()) {
         if (have_leader_data.load()) {
           double cmd = latest_leader_gripper.load();
-          if (std::abs(cmd - last_cmd) > 1e-4) {
-            bool ok = false;
+          bool grasp_now = (cmd <= 0.05);  // ≤0.05 被认为是“抓取信号”
+          bool release_now = (cmd > 0.2);  // >0.3 才允许松开
+
+          // ⬇️ 抓取逻辑
+          if (grasp_now && !last_grasp_state) {
             try {
-              ok = gripper.move(cmd, 0.1);
+              bool ok = gripper.grasp(0.015, 0.1, 20.0);
+              if (ok) {
+                std::cout << "[GRIPPER] Grasp command sent." << std::endl;
+                auto state = gripper.readOnce();
+                if (state.is_grasped) {
+                  std::cout << "[GRIPPER] Object grasped. Locking state." << std::endl;
+                  locked = true;
+                } else {
+                  std::cerr << "[GRIPPER] Grasp failed. Nothing held." << std::endl;
+                }
+              } else {
+                std::cerr << "[GRIPPER] Grasp command failed." << std::endl;
+              }
             } catch (const franka::Exception &e) {
               std::cerr << "[GRIPPER ERROR] " << e.what() << std::endl;
             }
-            if (ok) {
-              std::cout << "[GRIPPER] Moved to " << cmd << " m" << std::endl;
-              last_cmd = cmd;
-            } else {
-              std::cerr << "[GRIPPER WARNING] Move failed or returned false" << std::endl;
+          }
+
+          // ⬇️ 释放逻辑（只有在 grasp 状态、且 cmd > 0.3 才释放）
+          if (release_now && last_grasp_state && locked) {
+            try {
+              bool ok = gripper.move(0.08, 0.1);
+              if (ok) {
+                std::cout << "[GRIPPER] Gripper opened." << std::endl;
+                locked = false;  // 解除锁定
+              } else {
+                std::cerr << "[GRIPPER] Open failed." << std::endl;
+              }
+            } catch (const franka::Exception &e) {
+              std::cerr << "[GRIPPER ERROR] " << e.what() << std::endl;
             }
           }
+
+          // 更新状态
+          last_grasp_state = grasp_now;
         }
+
         std::this_thread::sleep_for(std::chrono::milliseconds(50));
       }
     });
 
-    std::cout << "[INFO] Starting torque control callback..." << std::endl;
+
 
     // 5) Real-time torque control loop
     robot.control([&](const franka::RobotState& state, franka::Duration) {
