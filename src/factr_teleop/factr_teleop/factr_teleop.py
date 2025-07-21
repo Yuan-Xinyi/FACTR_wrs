@@ -434,7 +434,7 @@ class FACTRTeleop(Node, ABC):
 
         if self.enable_gravity_comp: 
             torque_arm += self.gravity_compensation(leader_arm_pos, leader_arm_vel)
-            # torque_arm += self.friction_compensation(leader_arm_vel)
+            torque_arm += self.friction_compensation(leader_arm_vel)
         
         if self.enable_torque_feedback:
             external_joint_torque = self.get_leader_arm_external_joint_torque()
