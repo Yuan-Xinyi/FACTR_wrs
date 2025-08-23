@@ -1,0 +1,49 @@
+[github repo]
+original repo: https://github.com/RaindragonD/FACTR_Teleop
+repo with xinyi revision: https://github.com/Yuan-Xinyi/FACTR_wrs
+
+[setup]
+1. for basic packages and initial setup, please follow the original repo.
+2. install libfranka.
+
+[QUICK START]
+## Note: The torque control will apply zero torque at the beginning. The joint position of Franka will slightly change, causing a start joint position mismatch (which is why step 2 is after step 1).
+
+realsense-viewer
+
+## Ensure to source the ROS2 setup script in your terminal
+source /opt/ros/humble/setup.bash
+source install/local_setup.bash
+
+## Move the Franka to the init pos
+[In PyCharm, use the script to move rbt to the assigned pose]
+
+## Step 1: Begin the teleoperation
+# wrs@wrs-Inspiron-3471:~/factr_ws$ ros2 run factr_teleop factr_teleop_franka
+
+## Step 2: Then run the real-time control for Franka
+# wrs@wrs-Inspiron-3471:~/factr_ws/libfranka/build$ ./examples/franka_zmq_torque_control
+
+[Appendix]
+1. Please compile after each revision
+## cmake the libfranka library, control code in examples
+# wrs@wrs-Inspiron-3471:~/factr_ws/libfranka/build$ 
+cmake .. && make -j
+
+2. Moter check
+wrs@wrs-Inspiron-3471:~$ 
+ls /dev/serial/by-id/
+# usb-FTDI_USB__-__Serial_Converter_FT2KQCA5-if00-port0
+
+readlink -f /dev/serial/by-id/usb-FTDI_USB__-__Serial_Converter_FT2KQCA5-if00-port0
+# /dev/ttyUSB1
+
+cat /sys/bus/usb-serial/devices/ttyUSB0/latency_timer
+# 16
+
+echo 1 | sudo tee /sys/bus/usb-serial/devices/ttyUSB0/latency_timer
+# 1
+
+3. How to clear port usage
+sudo lsof -i :2098
+sudo kill -9 43415
